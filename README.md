@@ -31,7 +31,7 @@ Pillow (PIL)
 
 Berikut adalah struktur folder project **Deteksi Pink Eye Sapi**:
 
-![Struktur Folder](assets/folder-structure.png)
+![Struktur Folder](assets/folder.png)
 
 Keterangan:
 
