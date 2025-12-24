@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hasil Deteksi</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-yHcFj6g5x0R8jZb1e+0DqvYhXkVjP2yAqP5V5PbR1FyzZ+7M4RnZKZ2W6nBk5wWfkg0zj4oR6dGd4mW6A1QkNA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body class="bg-gray-100 font-sans flex justify-center py-10">
+    <div
+      class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-3xl text-center"
+    >
+      <h2 class="text-3xl font-bold mb-4">Hasil Deteksi</h2>
+      <p class="mb-6 text-gray-700">
+        <b>Waktu Deteksi:</b> {{ duration }} detik
+      </p>
+
+      <div class="mb-6">
+        <h3 class="text-xl font-semibold mb-2">Input</h3>
+        <img
+          src="{{ input_image }}"
+          class="mx-auto rounded-lg max-w-full shadow-md"
+        />
+      </div>
+
+      <div class="mb-6">
+        <h3 class="text-xl font-semibold mb-2">Output</h3>
+        <img
+          src="{{ result_image }}"
+          class="mx-auto rounded-lg max-w-full shadow-md"
+        />
+      </div>
+
+      <h3 class="text-xl font-semibold mb-4">Prediksi:</h3>
+      <table class="mx-auto w-full table-auto border-collapse">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="border px-4 py-2">Label</th>
+            <th class="border px-4 py-2">Confidence</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in results %}
+          <tr class="odd:bg-white even:bg-gray-50">
+            <td class="border px-4 py-2">{{ r.label }}</td>
+            <td class="border px-4 py-2">{{ r.score }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <div class="mt-6">
+        <a
+          href="/"
+          class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
+        >
+          <i class="fas fa-arrow-left mr-2"></i> Kembali
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

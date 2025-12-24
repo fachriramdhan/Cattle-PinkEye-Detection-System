@@ -1,0 +1,17 @@
+opencv-python
+streamlit
+Pillow
+numpy
+
+Kenapa YOLOv4-Tiny ?
+YOLOv4-Tiny dipilih karena memiliki keseimbangan antara akurasi dan kecepatan inferensi, 
+sehingga cocok untuk sistem berbasis web real-time.
+
+Confidence threshold digunakan untuk menentukan batas minimal tingkat kepercayaan model dalam menampilkan hasil deteksi. 
+Bounding box dengan nilai confidence di bawah threshold akan diabaikan guna mengurangi kesalahan deteksi.
+
+Overlap threshold digunakan dalam proses Non-Maximum Suppression (NMS) untuk menghilangkan bounding box yang saling 
+bertumpang tindih, sehingga hanya deteksi terbaik yang ditampilkan.
+
+Confidence threshold mengatur tingkat kepercayaan minimal suatu deteksi, sedangkan overlap threshold digunakan untuk 
+menghilangkan deteksi ganda yang saling tumpang tindih.
