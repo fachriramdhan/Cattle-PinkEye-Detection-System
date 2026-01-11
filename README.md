@@ -68,25 +68,24 @@ Digunakan untuk mengeliminasi bounding box yang tumpang tindih.
 
 Semakin rendah nilainya, semakin ketat sistem dalam menghapus kotak ganda pada satu objek yang sama.
 
+---
+
 🚀 Cara Menjalankan Aplikasi
 Metode 1: Local Installation
 Clone Repositori:
 
-Bash
-
+```Bash
 git clone [https://github.com/username/project-pink-eye.git](https://github.com/username/project-pink-eye.git)
 cd project-pink-eye
 Install Dependensi:
 
-Bash
-
+```Bash
 pip install flask opencv-python pillow numpy
 Siapkan Model: Pastikan file .weights sudah diletakkan di dalam folder weights/.
 
 Jalankan:
 
-Bash
-
+```Bash
 python app.py
 Akses melalui browser di: http://localhost:5000
 
@@ -95,13 +94,11 @@ Jika Anda ingin menjalankan aplikasi di lingkungan yang terisolasi:
 
 Build Image:
 
-Bash
-
+```Bash
 docker build -t pinkeye-detection .
 Run Container:
 
-Bash
-
+```Bash
 docker run -p 5000:5000 pinkeye-detection
 🔄 Alur Kerja Sistem
 Upload: User mengunggah foto mata sapi melalui form web.
