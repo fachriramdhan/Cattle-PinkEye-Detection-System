@@ -2,7 +2,7 @@
 ### Berbasis Citra Digital Menggunakan YOLOv4-Tiny
 
 Aplikasi web ini merupakan **sistem deteksi dini penyakit mata Pink Eye (Infectious Bovine Keratoconjunctivitis)** pada sapi berbasis **citra digital** menggunakan algoritma **YOLOv4-Tiny**.  
-Sistem dikembangkan sebagai **project skripsi** untuk membantu peternak dan pihak terkait dalam melakukan pemantauan kesehatan sapi secara **cepat, otomatis, dan berbasis AI** melalui gambar.
+Sistem dikembangkan sebagai **project skripsi** untuk membantu peternak dan pihak terkait dalam melakukan pemantauan kesehatan sapi secara **cepat, otomatis, dan berbasis Artificial Intelligence (AI)** melalui gambar.
 
 ---
 
@@ -14,7 +14,7 @@ Penyakit **Pink Eye** merupakan salah satu penyakit mata yang umum menyerang sap
 - Gangguan penglihatan hingga kebutaan
 - Kerugian ekonomi bagi peternak
 
-Pemeriksaan manual membutuhkan waktu dan tenaga ahli. Oleh karena itu, pemanfaatan **Computer Vision** dan **Deep Learning** diharapkan mampu membantu proses **deteksi dini** secara lebih **efisien, objektif, dan scalable**.
+Pemeriksaan manual membutuhkan waktu serta tenaga ahli. Oleh karena itu, pemanfaatan **Computer Vision** dan **Deep Learning** diharapkan mampu membantu proses **deteksi dini** secara lebih **efisien, objektif, dan scalable**.
 
 ---
 
@@ -36,7 +36,7 @@ Sistem ini dirancang untuk:
 ### 🔍 Metode Deteksi
 - **Algoritma**: YOLOv4-Tiny  
 - **Pendekatan**: Object Detection berbasis Deep Learning  
-- **Inference**: OpenCV DNN Module
+- **Inference Engine**: OpenCV DNN Module  
 
 ---
 
@@ -60,7 +60,7 @@ Sistem ini dirancang untuk:
 
 ## 📂 Struktur Folder Project
 
-Berikut struktur direktori project *Deteksi Pink Eye Sapi*:
+Struktur direktori project **Deteksi Pink Eye Sapi**:
 
 ```text
 project-root/
@@ -73,22 +73,20 @@ project-root/
 ├── coco.names           # YOLO class labels
 └── README.md            # Project documentation
 
-
-# Struktur Folder Project
-
-Berikut adalah struktur folder project **Deteksi Pink Eye Sapi**:
-
-![Struktur Folder](assets/folder.png)
+---
 
 📌 Catatan:
 Folder weights/ tidak diunggah ke GitHub karena ukuran file yang besar.
 
 ---
+
+📁 Visual Struktur Folder
+
 ⚙️ Fitur Aplikasi
 
 Upload gambar sapi melalui web interface
 
-Pengaturan:
+Pengaturan parameter deteksi:
 
 Confidence threshold
 
@@ -96,7 +94,7 @@ Overlap (NMS) threshold
 
 Deteksi otomatis penyakit mata
 
-Visualisasi hasil:
+Visualisasi hasil deteksi:
 
 Bounding box
 
@@ -106,7 +104,9 @@ Confidence score
 
 Informasi waktu proses deteksi
 
-Tampilan responsif dan user-friendly
+Tampilan antarmuka yang responsif dan user-friendly
+
+---
 
 🔄 Alur Kerja Sistem
 
@@ -126,32 +126,38 @@ Confidence score
 
 Waktu proses deteksi
 
+---
+
 🧩 Implementasi Sistem (app.py)
 
 File app.py berfungsi sebagai inti aplikasi, dengan tanggung jawab utama:
 
 Memuat model YOLOv4-Tiny (cfg, weights, labels)
 
-Melakukan preprocessing & inference citra
+Melakukan preprocessing dan inference citra
 
 Menerapkan Non-Maximum Suppression (NMS)
 
-Menampilkan hasil deteksi melalui antarmuka web Flask
+Menampilkan hasil deteksi melalui antarmuka web berbasis Flask
+
+---
 
 🔐 Highlight Teknis
 
-OpenCV DNN digunakan untuk inference tanpa framework berat
+OpenCV DNN digunakan untuk inference tanpa framework deep learning berat
 
 Non-Maximum Suppression (NMS) untuk mengurangi bounding box duplikat
 
 Visualisasi bounding box & label menggunakan Pillow
 
-Pengukuran waktu proses untuk evaluasi performa
+Pengukuran waktu proses untuk evaluasi performa sistem
+
+---
 
 🚀 Cara Menjalankan Aplikasi
 1️⃣ Persiapan Environment
 
-Pastikan Python sudah terinstall, lalu install dependency:
+Pastikan Python sudah terinstall, kemudian install dependency:
 
 pip install flask opencv-python pillow numpy
 
@@ -159,9 +165,11 @@ pip install flask opencv-python pillow numpy
 python app.py
 
 
-Aplikasi akan berjalan di:
+Aplikasi akan berjalan pada alamat berikut:
 
 http://localhost:5000
+
+---
 
 📊 Output Sistem
 
@@ -171,15 +179,19 @@ Informasi hasil deteksi ditampilkan langsung pada halaman web
 
 Waktu inference ditampilkan dalam satuan detik
 
+---
+
 🎓 Catatan Akademik
 
-Project ini dikembangkan sebagai bagian dari penelitian skripsi dengan fokus pada:
+Project ini dikembangkan sebagai bagian dari penelitian skripsi, dengan fokus pada:
 
-Penerapan Deep Learning pada bidang peternakan
+Penerapan Deep Learning di bidang peternakan
 
 Implementasi Computer Vision untuk deteksi penyakit hewan
 
 Pengembangan sistem berbasis web yang aplikatif
+
+---
 
 📄 Lisensi
 
