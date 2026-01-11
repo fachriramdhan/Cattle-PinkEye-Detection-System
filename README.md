@@ -1,203 +1,122 @@
-# 🐄 Deteksi Dini Penyakit Mata *Pink Eye* pada Sapi  
-### Berbasis Citra Digital Menggunakan YOLOv4-Tiny
+# 🐄 Deteksi Dini Penyakit Mata *Pink Eye* pada Sapi
+### **Berbasis Citra Digital Menggunakan YOLOv4-Tiny**
 
-Aplikasi web ini merupakan **sistem deteksi dini penyakit mata Pink Eye (Infectious Bovine Keratoconjunctivitis)** pada sapi berbasis **citra digital** menggunakan algoritma **YOLOv4-Tiny**.  
-Sistem dikembangkan sebagai **project skripsi** untuk membantu peternak dan pihak terkait dalam melakukan pemantauan kesehatan sapi secara **cepat, otomatis, dan berbasis Artificial Intelligence (AI)** melalui gambar.
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
+[![Flask](https://img.shields.io/badge/Framework-Flask-lightgrey.svg)](https://flask.palletsprojects.com/)
+[![YOLOv4-Tiny](https://img.shields.io/badge/Model-YOLOv4--Tiny-green.svg)](https://github.com/AlexeyAB/darknet)
+[![License](https://img.shields.io/badge/License-Academic-orange.svg)](#)
+
+Aplikasi web ini merupakan **sistem deteksi dini penyakit mata Pink Eye** (*Infectious Bovine Keratoconjunctivitis*) pada sapi. Dikembangkan sebagai **Proyek Skripsi**, sistem ini memanfaatkan teknologi *Artificial Intelligence* (AI) untuk membantu peternak melakukan pemantauan kesehatan mata sapi secara cepat, otomatis, dan akurat melalui analisis citra digital.
 
 ---
 
 ## 📌 Latar Belakang
+Penyakit **Pink Eye** merupakan infeksi mata menular yang umum menyerang ternak sapi. Dampak dari penyakit ini meliputi:
+* **Penurunan Produktivitas:** Penurunan berat badan karena sapi mengalami nyeri saat makan.
+* **Gangguan Penglihatan:** Risiko kebutaan permanen jika tidak ditangani segera.
+* **Kerugian Ekonomi:** Biaya pengobatan yang besar bagi industri peternakan.
 
-Penyakit **Pink Eye** merupakan salah satu penyakit mata yang umum menyerang sapi dan dapat menyebabkan:
-
-- Penurunan produktivitas ternak
-- Gangguan penglihatan hingga kebutaan
-- Kerugian ekonomi bagi peternak
-
-Pemeriksaan manual membutuhkan waktu serta tenaga ahli. Oleh karena itu, pemanfaatan **Computer Vision** dan **Deep Learning** diharapkan mampu membantu proses **deteksi dini** secara lebih **efisien, objektif, dan scalable**.
+Sistem ini hadir sebagai solusi berbasis **Computer Vision** untuk mendeteksi gejala secara objektif tanpa harus mendatangkan ahli secara langsung di tahap awal.
 
 ---
 
 ## 🎯 Tujuan Sistem
-
-Sistem ini dirancang untuk:
-
-- Mendeteksi keberadaan penyakit mata **Pink Eye** pada sapi dari citra digital
-- Menampilkan hasil deteksi berupa:
-  - **Bounding box**
-  - **Label kelas**
-  - **Confidence score**
-- Menyediakan antarmuka web yang **mudah digunakan** oleh pengguna non-teknis
+1. **Otomatisasi:** Menggantikan pengecekan visual manual dengan sistem AI.
+2. **Kecepatan:** Memberikan hasil deteksi dalam hitungan detik.
+3. **Aksesibilitas:** Memudahkan peternak melalui antarmuka web yang sederhana dan responsif.
 
 ---
 
 ## 🧠 Metodologi & Teknologi
 
-### 🔍 Metode Deteksi
-- **Algoritma**: YOLOv4-Tiny  
-- **Pendekatan**: Object Detection berbasis Deep Learning  
-- **Inference Engine**: OpenCV DNN Module  
+### **Metode Deteksi**
+* **Algoritma:** YOLOv4-Tiny.
+* **Inference Engine:** OpenCV DNN (Deep Neural Networks).
+* **Alur:** Pre-processing -> Object Detection -> Non-Maximum Suppression (NMS) -> Output Visual.
 
----
-
-### 🛠️ Technology Stack
-
-#### Backend & AI
-- **Python**
-- **YOLOv4-Tiny**
-- **OpenCV (DNN)**
-- **NumPy**
-- **Pillow (PIL)**
-
-#### Web Framework
-- **Flask** – Backend web application
-
-#### Frontend
-- **HTML**
-- **Tailwind CSS**
+### **Tech Stack**
+* **Backend:** Python, Flask
+* **AI/CV:** OpenCV, NumPy, Pillow
+* **Frontend:** HTML5, Tailwind CSS
 
 ---
 
 ## 📂 Struktur Folder Project
-
-Struktur direktori project **Deteksi Pink Eye Sapi**:
-
 ```text
 project-root/
-├── app.py              # Main application script
-├── configs/             # YOLOv4-Tiny configuration files
-├── weights/             # YOLOv4 trained weights (not uploaded)
-├── fonts/               # Font for image annotation
-├── static/              # Input & output images
-├── templates/           # HTML templates
-├── coco.names           # YOLO class labels
-└── README.md            # Project documentation
-
+├── app.py              # Logika utama Flask dan AI Inference
+├── configs/            # File konfigurasi model (.cfg)
+├── weights/            # File bobot model (.weights) - *Harus diisi manual*
+├── fonts/              # Font untuk label pada hasil deteksi
+├── static/             # Folder penyimpanan gambar (Input/Output)
+├── templates/          # File HTML (index.html, dsb)
+├── coco.names          # Daftar label kelas
+└── README.md           # Dokumentasi Proyek
+```
 ---
 
-📌 Catatan:
-Folder weights/ tidak diunggah ke GitHub karena ukuran file yang besar.
+⚙️ Penjelasan Parameter Deteksi
+Dalam aplikasi ini, Anda dapat mengatur dua parameter utama untuk mengoptimalkan hasil:
 
----
+Confidence Threshold: * Batas minimum tingkat keyakinan model.
 
-📁 Visual Struktur Folder
+Contoh: Jika diatur 0.5, sistem hanya menampilkan objek dengan tingkat keyakinan di atas 50%.
 
-⚙️ Fitur Aplikasi
+NMS (Non-Maximum Suppression) Threshold:
 
-Upload gambar sapi melalui web interface
+Digunakan untuk mengeliminasi bounding box yang tumpang tindih.
 
-Pengaturan parameter deteksi:
-
-Confidence threshold
-
-Overlap (NMS) threshold
-
-Deteksi otomatis penyakit mata
-
-Visualisasi hasil deteksi:
-
-Bounding box
-
-Label kelas
-
-Confidence score
-
-Informasi waktu proses deteksi
-
-Tampilan antarmuka yang responsif dan user-friendly
-
----
-
-🔄 Alur Kerja Sistem
-
-Pengguna mengunggah gambar sapi
-
-Sistem melakukan preprocessing citra
-
-Model YOLOv4-Tiny melakukan deteksi objek
-
-Sistem menampilkan:
-
-Gambar hasil deteksi
-
-Label kelas
-
-Confidence score
-
-Waktu proses deteksi
-
----
-
-🧩 Implementasi Sistem (app.py)
-
-File app.py berfungsi sebagai inti aplikasi, dengan tanggung jawab utama:
-
-Memuat model YOLOv4-Tiny (cfg, weights, labels)
-
-Melakukan preprocessing dan inference citra
-
-Menerapkan Non-Maximum Suppression (NMS)
-
-Menampilkan hasil deteksi melalui antarmuka web berbasis Flask
-
----
-
-🔐 Highlight Teknis
-
-OpenCV DNN digunakan untuk inference tanpa framework deep learning berat
-
-Non-Maximum Suppression (NMS) untuk mengurangi bounding box duplikat
-
-Visualisasi bounding box & label menggunakan Pillow
-
-Pengukuran waktu proses untuk evaluasi performa sistem
-
----
+Semakin rendah nilainya, semakin ketat sistem dalam menghapus kotak ganda pada satu objek yang sama.
 
 🚀 Cara Menjalankan Aplikasi
-1️⃣ Persiapan Environment
+Metode 1: Local Installation
+Clone Repositori:
 
-Pastikan Python sudah terinstall, kemudian install dependency:
+Bash
+
+git clone [https://github.com/username/project-pink-eye.git](https://github.com/username/project-pink-eye.git)
+cd project-pink-eye
+Install Dependensi:
+
+Bash
 
 pip install flask opencv-python pillow numpy
+Siapkan Model: Pastikan file .weights sudah diletakkan di dalam folder weights/.
 
-2️⃣ Menjalankan Aplikasi
+Jalankan:
+
+Bash
+
 python app.py
+Akses melalui browser di: http://localhost:5000
 
+Metode 2: Menggunakan Docker
+Jika Anda ingin menjalankan aplikasi di lingkungan yang terisolasi:
 
-Aplikasi akan berjalan pada alamat berikut:
+Build Image:
 
-http://localhost:5000
+Bash
 
----
+docker build -t pinkeye-detection .
+Run Container:
 
-📊 Output Sistem
+Bash
 
-Gambar hasil deteksi tersimpan di folder static/
+docker run -p 5000:5000 pinkeye-detection
+🔄 Alur Kerja Sistem
+Upload: User mengunggah foto mata sapi melalui form web.
 
-Informasi hasil deteksi ditampilkan langsung pada halaman web
+Processing: Sistem memproses gambar menggunakan OpenCV DNN dengan model YOLOv4-Tiny.
 
-Waktu inference ditampilkan dalam satuan detik
+Filtering: Kotak deteksi difilter menggunakan parameter Confidence dan NMS.
 
----
+Result: Gambar hasil deteksi (beserta kotak dan akurasi) ditampilkan di layar beserta durasi waktu prosesnya.
 
 🎓 Catatan Akademik
+Project ini dikembangkan untuk kepentingan penelitian skripsi. Fokus utama adalah pada implementasi Deep Learning yang ringan (lightweight) agar dapat berjalan pada perangkat dengan komputasi menengah ke bawah tanpa memerlukan GPU kelas atas.
 
-Project ini dikembangkan sebagai bagian dari penelitian skripsi, dengan fokus pada:
+📄 Lisensi & Kontribusi
+Project ini bersifat open-source untuk tujuan pendidikan. Jika Anda menggunakan kode ini untuk penelitian, mohon cantumkan sumber atau sitasi.
 
-Penerapan Deep Learning di bidang peternakan
+Author: [Fachri Ramdhan]
 
-Implementasi Computer Vision untuk deteksi penyakit hewan
-
-Pengembangan sistem berbasis web yang aplikatif
-
----
-
-📄 Lisensi
-
-Project ini dibuat untuk kepentingan akademik dan edukasi.
-Penggunaan ulang diperbolehkan dengan mencantumkan sumber.
-
-👨‍💻 Author
-
-Fachri Ramdhan
