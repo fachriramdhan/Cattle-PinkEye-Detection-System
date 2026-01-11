@@ -58,48 +58,48 @@ project-root/
 ⚙️ Penjelasan Parameter Deteksi
 Dalam aplikasi ini, Anda dapat mengatur dua parameter utama untuk mengoptimalkan hasil:
 
-Confidence Threshold: * Batas minimum tingkat keyakinan model.
+Confidence Threshold: Batas minimum tingkat keyakinan model.
 
 Contoh: Jika diatur 0.5, sistem hanya menampilkan objek dengan tingkat keyakinan di atas 50%.
 
-NMS (Non-Maximum Suppression) Threshold:
-
-Digunakan untuk mengeliminasi bounding box yang tumpang tindih.
-
-Semakin rendah nilainya, semakin ketat sistem dalam menghapus kotak ganda pada satu objek yang sama.
+NMS (Non-Maximum Suppression) Threshold: Digunakan untuk mengeliminasi bounding box yang tumpang tindih. Semakin rendah nilainya, semakin ketat sistem dalam menghapus kotak ganda pada satu objek yang sama.
 
 ---
 
 🚀 Cara Menjalankan Aplikasi
 Metode 1: Local Installation
 Clone Repositori:
-
-```Bash
-git clone [https://github.com/username/project-pink-eye.git](https://github.com/username/project-pink-eye.git)
+```git clone [https://github.com/username/project-pink-eye.git](https://github.com/username/project-pink-eye.git)
 cd project-pink-eye
+```
+
 Install Dependensi:
-
-```Bash
+```
 pip install flask opencv-python pillow numpy
+```
+
 Siapkan Model: Pastikan file .weights sudah diletakkan di dalam folder weights/.
-
 Jalankan:
-
-```Bash
+```
 python app.py
+```
+
 Akses melalui browser di: http://localhost:5000
 
 Metode 2: Menggunakan Docker
 Jika Anda ingin menjalankan aplikasi di lingkungan yang terisolasi:
-
 Build Image:
-
-```Bash
+```
 docker build -t pinkeye-detection .
-Run Container:
+```
 
-```Bash
+Run Container:
+```
 docker run -p 5000:5000 pinkeye-detection
+```
+
+---
+
 🔄 Alur Kerja Sistem
 Upload: User mengunggah foto mata sapi melalui form web.
 
@@ -117,3 +117,4 @@ Project ini bersifat open-source untuk tujuan pendidikan. Jika Anda menggunakan 
 
 Author: [Fachri Ramdhan]
 
+---
