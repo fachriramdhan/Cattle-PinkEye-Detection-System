@@ -55,7 +55,7 @@ project-root/
 ```
 ---
 
-⚙️ Penjelasan Parameter Deteksi
+## ⚙️ Penjelasan Parameter Deteksi
 Dalam aplikasi ini, Anda dapat mengatur dua parameter utama untuk mengoptimalkan hasil:
 
 Confidence Threshold: Batas minimum tingkat keyakinan model.
@@ -66,7 +66,7 @@ NMS (Non-Maximum Suppression) Threshold: Digunakan untuk mengeliminasi bounding 
 
 ---
 
-🚀 Cara Menjalankan Aplikasi
+## 🚀 Cara Menjalankan Aplikasi
 Metode 1: Local Installation
 Clone Repositori:
 ```git clone [https://github.com/username/project-pink-eye.git](https://github.com/username/project-pink-eye.git)
@@ -100,21 +100,21 @@ docker run -p 5000:5000 pinkeye-detection
 
 ---
 
-🔄 Alur Kerja Sistem
-Upload: User mengunggah foto mata sapi melalui form web.
+## 🔄 Alur Kerja Sistem
+Proses deteksi pada sistem ini mengikuti tahapan berikut:
 
-Processing: Sistem memproses gambar menggunakan OpenCV DNN dengan model YOLOv4-Tiny.
+Upload: Pengguna mengunggah foto mata sapi melalui formulir pada antarmuka web.
 
-Filtering: Kotak deteksi difilter menggunakan parameter Confidence dan NMS.
+Processing: Sistem melakukan preprocessing dan memproses gambar menggunakan OpenCV DNN dengan arsitektur model YOLOv4-Tiny.
 
-Result: Gambar hasil deteksi (beserta kotak dan akurasi) ditampilkan di layar beserta durasi waktu prosesnya.
+Filtering: Hasil deteksi mentah disaring menggunakan parameter Confidence Score dan Non-Maximum Suppression (NMS) untuk memastikan hanya kotak deteksi terbaik yang ditampilkan.
 
-🎓 Catatan Akademik
-Project ini dikembangkan untuk kepentingan penelitian skripsi. Fokus utama adalah pada implementasi Deep Learning yang ringan (lightweight) agar dapat berjalan pada perangkat dengan komputasi menengah ke bawah tanpa memerlukan GPU kelas atas.
+Result: Sistem menyajikan gambar hasil deteksi yang telah dilengkapi dengan bounding box, label akurasi, serta informasi durasi waktu proses (inference time).
 
-📄 Lisensi & Kontribusi
-Project ini bersifat open-source untuk tujuan pendidikan. Jika Anda menggunakan kode ini untuk penelitian, mohon cantumkan sumber atau sitasi.
+## 🎓 Catatan Akademik
+Project ini dikembangkan sebagai bagian dari penelitian skripsi. Fokus utama penelitian adalah implementasi Deep Learning yang bersifat lightweight (ringan). Hal ini bertujuan agar sistem deteksi objek tetap memiliki performa tinggi dan akurat meskipun dijalankan pada perangkat dengan spesifikasi komputasi menengah ke bawah tanpa bergantung pada GPU kelas atas.
+
+## 📄 Lisensi & Kontribusi
+Project ini bersifat open-source dan ditujukan untuk kepentingan pendidikan serta pengembangan ilmu pengetahuan. Jika Anda menggunakan atau mengembangkan ulang kode ini untuk keperluan penelitian akademik, mohon untuk mencantumkan sumber atau sitasi ke repositori ini.
 
 Author: [Fachri Ramdhan]
-
----
