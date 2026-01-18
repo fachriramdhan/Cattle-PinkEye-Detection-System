@@ -6,33 +6,33 @@
 [![YOLOv4-Tiny](https://img.shields.io/badge/Model-YOLOv4--Tiny-green.svg)](https://github.com/AlexeyAB/darknet)
 [![License](https://img.shields.io/badge/License-Academic-orange.svg)](#)
 
-Aplikasi web ini merupakan **sistem deteksi dini penyakit mata Pink Eye** (*Infectious Bovine Keratoconjunctivitis*) pada sapi. Dikembangkan sebagai **Proyek Skripsi**, sistem ini memanfaatkan teknologi *Artificial Intelligence* (AI) untuk membantu peternak melakukan pemantauan kesehatan mata sapi secara cepat, otomatis, dan akurat melalui analisis citra digital.
+This web application is an early detection system for Pink Eye disease (Infectious Bovine Keratoconjunctivitis) in cattle. Developed as an Undergraduate Thesis Project, this system leverages Artificial Intelligence (AI) technology to assist farmers in monitoring cattle eye health in a fast, automated, and accurate manner through digital image analysis.
 
 ---
 
-## 📌 Latar Belakang
-Penyakit **Pink Eye** merupakan infeksi mata menular yang umum menyerang ternak sapi. Dampak dari penyakit ini meliputi:
-* **Penurunan Produktivitas:** Penurunan berat badan karena sapi mengalami nyeri saat makan.
-* **Gangguan Penglihatan:** Risiko kebutaan permanen jika tidak ditangani segera.
-* **Kerugian Ekonomi:** Biaya pengobatan yang besar bagi industri peternakan.
+## 📌 Background
+**Pink Eye** is a contagious eye infection commonly affecting cattle. The impacts of this disease include:
+* **Decreased Productivity:** Weight loss due to pain while eating.
+* **Visual Impairment:** Risk of permanent blindness if not treated promptly.
+* **Economic Losses:** High treatment costs for the livestock industry.
 
-Sistem ini hadir sebagai solusi berbasis **Computer Vision** untuk mendeteksi gejala secara objektif tanpa harus mendatangkan ahli secara langsung di tahap awal.
-
----
-
-## 🎯 Tujuan Sistem
-1. **Otomatisasi:** Menggantikan pengecekan visual manual dengan sistem AI.
-2. **Kecepatan:** Memberikan hasil deteksi dalam hitungan detik.
-3. **Aksesibilitas:** Memudahkan peternak melalui antarmuka web yang sederhana dan responsif.
+This system is proposed as a Computer Vision–based solution to objectively detect early symptoms without requiring direct involvement of experts at the initial stage.
 
 ---
 
-## 🧠 Metodologi & Teknologi
+## 🎯 System Objectives
+1. **Automation:** Replace manual visual inspection with an AI-based system.
+2. **Speed:** Deliver detection results within seconds.
+3. **Accessibility:** Provide ease of use through a simple and responsive web interface.
 
-### **Metode Deteksi**
-* **Algoritma:** YOLOv4-Tiny.
+---
+
+## 🧠 Methodology & Technology
+
+### **Detection Method**
+* **Algorithm:** YOLOv4-Tiny.
 * **Inference Engine:** OpenCV DNN (Deep Neural Networks).
-* **Alur:** Pre-processing -> Object Detection -> Non-Maximum Suppression (NMS) -> Output Visual.
+* **Pipeline:** Pre-processing → Object Detection → Non-Maximum Suppression (NMS) → Visual Output.
 
 ### **Tech Stack**
 * **Backend:** Python, Flask
@@ -44,50 +44,49 @@ Sistem ini hadir sebagai solusi berbasis **Computer Vision** untuk mendeteksi ge
 ## 📂 Struktur Folder Project
 ```text
 project-root/
-├── app.py              # Logika utama Flask dan AI Inference
-├── configs/            # File konfigurasi model (.cfg)
-├── weights/            # File bobot model (.weights) - *Harus diisi manual*
-├── fonts/              # Font untuk label pada hasil deteksi
-├── static/             # Folder penyimpanan gambar (Input/Output)
-├── templates/          # File HTML (index.html, dsb)
-├── coco.names          # Daftar label kelas
-└── README.md           # Dokumentasi Proyek
+├── app.py              # Main Flask logic and AI inference
+├── configs/            # Model configuration files (.cfg)
+├── weights/            # Model weight files (.weights) - *Must be added manually*
+├── fonts/              # Fonts for detection labels
+├── static/             # Image storage directory (Input/Output)
+├── templates/          # HTML templates (index.html, etc.)
+├── coco.names          # Class label list
+└── README.md           # Project documentation
 ```
 ---
 
-## ⚙️ Penjelasan Parameter Deteksi
-Dalam aplikasi ini, Anda dapat mengatur dua parameter utama untuk mengoptimalkan hasil:
+## ⚙️ Detection Parameters Explanation
+This application allows users to configure two main parameters to optimize detection results:
 
-Confidence Threshold: Batas minimum tingkat keyakinan model.
+**Confidence Threshold:** The minimum confidence score required for a detection to be displayed.
+Example: If set to 0.5, the system will only display objects with confidence scores above 50%.
 
-Contoh: Jika diatur 0.5, sistem hanya menampilkan objek dengan tingkat keyakinan di atas 50%.
-
-NMS (Non-Maximum Suppression) Threshold: Digunakan untuk mengeliminasi bounding box yang tumpang tindih. Semakin rendah nilainya, semakin ketat sistem dalam menghapus kotak ganda pada satu objek yang sama.
-
+**NMS (Non-Maximum Suppression) Threshold:** Used to eliminate overlapping bounding boxes.
+Lower values result in stricter suppression of duplicate boxes for the same object.
 ---
 
-## 🚀 Cara Menjalankan Aplikasi
-Metode 1: Local Installation
+## 🚀 How to Run the Application
+Method 1: Local Installation
 Clone Repositori:
-```git clone [https://github.com/username/project-pink-eye.git](https://github.com/username/project-pink-eye.git)
+```git clone [https://github.com/fachriramdhan/project-pink-eye.git](https://github.com/username/project-pink-eye.git)
 cd project-pink-eye
 ```
 
-Install Dependensi:
+Install Dependencies:
 ```
 pip install flask opencv-python pillow numpy
 ```
 
-Siapkan Model: Pastikan file .weights sudah diletakkan di dalam folder weights/.
-Jalankan:
+Prepare the Model: Ensure the .weights file is placed inside the weights/.
+Run the app:
 ```
 python app.py
 ```
 
-Akses melalui browser di: http://localhost:5000
+Access the application via your browser at: http://localhost:5000
 
-Metode 2: Menggunakan Docker
-Jika Anda ingin menjalankan aplikasi di lingkungan yang terisolasi:
+Method 2: Using Docker
+To run the application in an isolated environment:
 Build Image:
 ```
 docker build -t pinkeye-detection .
@@ -100,21 +99,19 @@ docker run -p 5000:5000 pinkeye-detection
 
 ---
 
-## 🔄 Alur Kerja Sistem
-Proses deteksi pada sistem ini mengikuti tahapan berikut:
+## 🔄 System Workflow
+The detection process follows these stages:
 
-Upload: Pengguna mengunggah foto mata sapi melalui formulir pada antarmuka web.
+1. **Upload:** Users upload an image of a cow’s eye through the web interface.
+2. **Processing:** The system performs preprocessing and image inference using OpenCV DNN with the YOLOv4-Tiny architecture.
+3. **Filtering:** Raw detections are filtered using Confidence Score and Non-Maximum Suppression (NMS).
+4. **Result:** The system displays the output image with bounding boxes, confidence labels, and inference time information.
 
-Processing: Sistem melakukan preprocessing dan memproses gambar menggunakan OpenCV DNN dengan arsitektur model YOLOv4-Tiny.
+## 🎓 Academic Notes
+This project was developed as part of an undergraduate thesis research. The main focus is the implementation of lightweight Deep Learning models, enabling high-performance and accurate object detection on devices with low-to-medium computational resources, without relying on high-end GPUs.
 
-Filtering: Hasil deteksi mentah disaring menggunakan parameter Confidence Score dan Non-Maximum Suppression (NMS) untuk memastikan hanya kotak deteksi terbaik yang ditampilkan.
-
-Result: Sistem menyajikan gambar hasil deteksi yang telah dilengkapi dengan bounding box, label akurasi, serta informasi durasi waktu proses (inference time).
-
-## 🎓 Catatan Akademik
-Project ini dikembangkan sebagai bagian dari penelitian skripsi. Fokus utama penelitian adalah implementasi Deep Learning yang bersifat lightweight (ringan). Hal ini bertujuan agar sistem deteksi objek tetap memiliki performa tinggi dan akurat meskipun dijalankan pada perangkat dengan spesifikasi komputasi menengah ke bawah tanpa bergantung pada GPU kelas atas.
-
-## 📄 Lisensi & Kontribusi
-Project ini bersifat open-source dan ditujukan untuk kepentingan pendidikan serta pengembangan ilmu pengetahuan. Jika Anda menggunakan atau mengembangkan ulang kode ini untuk keperluan penelitian akademik, mohon untuk mencantumkan sumber atau sitasi ke repositori ini.
+## 📄 License & Contribution
+This project is open-source and intended for educational and scientific development purposes.
+If you use or extend this code for academic research, please provide proper attribution or citation to this repository.
 
 Author: [Fachri Ramdhan]
